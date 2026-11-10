@@ -99,3 +99,32 @@ app.post("/series", (req, res) => {
 app.get("/erro", (req, res) => {
   throw new Error("Bug simulado: erro proposital para testar produção");
 });
+
+app.get("/dolar", async (req, res, next) => {
+  try {
+    const resposta = await fetch(
+      "https://economia.awesomeapi.com.br/json/last/USD-BRL"
+    );
+    if (!resposta.ok) {
+      return res
+        .status(502)
+        .json({ erro: "Falha ao consultar a API pública" });
+    }
+    const dados = await resposta.json();
+    res.json(dados);
+  } catch (err) {
+    next(err);
+  }
+});
+ 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ erro: err.message });
+});
+ 
+const server = app.listen(port, () =>
+  console.log(`Example app listening on port ${port}!`)
+);
+ 
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
