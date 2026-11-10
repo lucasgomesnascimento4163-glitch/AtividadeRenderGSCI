@@ -86,3 +86,12 @@ app.get("/pokemons", (req, res) => {
   res.json(pokemonsDoAsh);
 });
  
+const series = [
+  { id: 1, titulo: "Breaking Bad" },
+  { id: 2, titulo: "Transformers Prime" },
+  { id: 3, titulo: "Stranger Things" },
+];
+ 
+app.post("/series", (req, res) => {
+  res.json(series);
+});
