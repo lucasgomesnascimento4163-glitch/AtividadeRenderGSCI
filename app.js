@@ -95,3 +95,7 @@ const series = [
 app.post("/series", (req, res) => {
   res.json(series);
 });
+
+app.get("/erro", (req, res) => {
+  throw new Error("Bug simulado: erro proposital para testar produção");
+});
