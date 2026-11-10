@@ -68,3 +68,21 @@ app.get("/meunome", (req, res) => {
 app.get("/tico", (req, res) => {
   res.send("teco");
 });
+
+const pokemonsDoAsh = [
+  { ordem: 1, nome: "Caterpie" },
+  { ordem: 2, nome: "Pidgeotto" },
+  { ordem: 3, nome: "Spearow" },
+  { ordem: 4, nome: "Bulbasaur" },
+  { ordem: 5, nome: "Krabby" },
+  { ordem: 6, nome: "Primeape" },
+  { ordem: 7, nome: "Muk" },
+  { ordem: 8, nome: "Tauros" },
+  { ordem: 9, nome: "Lapras" },
+  { ordem: 10, nome: "Snorlax" },
+];
+ 
+app.get("/pokemons", (req, res) => {
+  res.json(pokemonsDoAsh);
+});
+ 
